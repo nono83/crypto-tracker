@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crypto tracker - Nouvelle transaction{% endblock %}
+
+
+{% block body %}
+    <div class="row border-bottom border-light mb-5 mt-5">
+            <h1 class="text-center" name="titre">Ajouter une transaction</h1>
+    </div>
+
+
+{#     {{ include('crypto/_form.html.twig') }} #}
+<div class="row col-9 mx-auto">
+    {{ form_start(form) }}
+        <div class="input-block">
+            {{ form_widget(form.apiID) }}
+            <i class="fa fa-solid fa-magnifying-glass"></i>
+
+            <div class="form-error">
+                {{ form_errors(form.apiID) }}
+            </div>
+        </div>
+        <div class="input-block">
+            {{ form_widget(form.quantity) }}
+           <i class="fa fa-solid fa-coins"></i>
+
+
+            <div class="form-error">
+                {{ form_errors(form.quantity) }}
+            </div>
+        </div>
+        <div class="input-block">
+            {{ form_widget(form.price) }}
+            <i class="fa fa-solid fa-euro-sign"></i>
+            
+            <div class="form-error">
+                {{ form_errors(form.price) }}
+            </div>
+        </div>
+        {{ form_widget(form.name) }}
+        {{ form_widget(form.symbol) }}
+        {{ form_widget(form.logo) }}
+        <div class="text-center fixed-bottom"> {{ form_widget(form.save) }} </div>
+    {{ form_end(form) }}
+</div>   
+    {{ encore_entry_script_tags('crypto') }}
+ 
+{% endblock %}

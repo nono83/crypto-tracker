@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crypto index{% endblock %}
+
+{% block body %}
+    <h1>Crypto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for crypto in cryptos %}
+            <tr>
+                <td>{{ crypto.id }}</td>
+                <td>{{ crypto.name }}</td>
+                <td>{{ crypto.symbol }}</td>
+                <td>{{ crypto.quantity }}</td>
+                <td>{{ crypto.price }}</td>
+                <td>
+                    <a href="{{ path('app_crypto_show', {'id': crypto.id}) }}">show</a>
+                    <a href="{{ path('app_crypto_edit', {'id': crypto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_crypto_new') }}">Create new</a>
+{% endblock %}

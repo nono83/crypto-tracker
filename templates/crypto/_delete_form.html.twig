@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_crypto_delete', {'id': crypto.id}) }}" onsubmit="return confirm('Confirmez vous la suppression de cette transaction ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ crypto.id) }}">
+    <div class="text-center fixed-bottom"> <button class="btn-submit mb-5">VALIDER</button></div>
+</form>
