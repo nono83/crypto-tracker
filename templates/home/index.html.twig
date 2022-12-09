@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crypto Tracker - Accueil{% endblock %}
+{% block body %}
+        {# Titre de la page #}
+        <div class="row border-bottom border-light mt-4">
+            <div class="col-1">
+            </div>
+            <div class=" my-auto col-7 ">
+                <h1 id="logo">Crypto Tracker</h1>
+            </div>
+            <div class="text-center my-auto col-4 ">
+                <a  class="mx-5" id="edit" href="" >
+                    <img  width="30px" src="{{ asset('build/images/edit.png') }}" alt="Editer" title="Editer">
+                </a>
+
+                <a  id="add" href="{{ path('app_crypto_new') }}" >
+                    <img width="30px" src="{{ asset('build/images/add.png') }}" alt="Ajouter" title="Ajouter">
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row col-9 mx-auto">
+            <div class="text-center p-5">
+                <a href="{{ path('app_chartjs') }}" id="total">
+                    {{ total }} €
+                </a>
+            </div>
+        </div>
+
+    <div class="row col-9 mx-auto">
+        <table id="cryptoTable"  class="table table-hover" >
+        
+            <tbody>
+            {% for crypto in cryptos %}
+                <tr data-id={{ crypto.id }}>
+                    <td width="100%" class="align-middle"> <img src="{{ crypto.logo }}" width='30px' alt="logo {{ crypto.symbol }}"><span class="symbol"> {{ crypto.symbol }}</span> <span class="name">({{  crypto.name }})</span></td>
+                    <td  class="align-left"><img src="{{ asset('build/images/') ~ crypto.evolution }}" alt={{ crypto.evolution=='up.png' ? 'En hausse' : 'En baisse' }}></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">Votre portefeuille est vide</td>
+                </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+{{ encore_entry_script_tags('home') }}
+{% endblock %}
