@@ -171,7 +171,7 @@ class Crypto
         return $this;
     }
  
-    public function getEvolution(): ?strin
+    public function getEvolution(): ?string
     {
         return $this->evolution;
     }
